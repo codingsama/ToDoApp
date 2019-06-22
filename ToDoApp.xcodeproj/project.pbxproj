@@ -8,20 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		03E0402422BEC2A10050F91F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E0402322BEC2A10050F91F /* AppDelegate.swift */; };
-		03E0402622BEC2A10050F91F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E0402522BEC2A10050F91F /* ViewController.swift */; };
 		03E0402922BEC2A10050F91F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E0402722BEC2A10050F91F /* Main.storyboard */; };
 		03E0402B22BEC2A20050F91F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03E0402A22BEC2A20050F91F /* Assets.xcassets */; };
 		03E0402E22BEC2A20050F91F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E0402C22BEC2A20050F91F /* LaunchScreen.storyboard */; };
+		03E0403922BEC5820050F91F /* ToDoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E0403822BEC5820050F91F /* ToDoTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		03E0402022BEC2A10050F91F /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03E0402322BEC2A10050F91F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		03E0402522BEC2A10050F91F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		03E0402822BEC2A10050F91F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		03E0402A22BEC2A20050F91F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03E0402D22BEC2A20050F91F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03E0402F22BEC2A20050F91F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03E0403822BEC5820050F91F /* ToDoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +54,38 @@
 		03E0402222BEC2A10050F91F /* ToDoApp */ = {
 			isa = PBXGroup;
 			children = (
-				03E0402322BEC2A10050F91F /* AppDelegate.swift */,
-				03E0402522BEC2A10050F91F /* ViewController.swift */,
-				03E0402722BEC2A10050F91F /* Main.storyboard */,
+				03E0403722BEC30A0050F91F /* Model */,
+				03E0403622BEC2FE0050F91F /* View */,
+				03E0403522BEC2EB0050F91F /* Controller */,
 				03E0402A22BEC2A20050F91F /* Assets.xcassets */,
 				03E0402C22BEC2A20050F91F /* LaunchScreen.storyboard */,
 				03E0402F22BEC2A20050F91F /* Info.plist */,
 			);
 			path = ToDoApp;
+			sourceTree = "<group>";
+		};
+		03E0403522BEC2EB0050F91F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				03E0402322BEC2A10050F91F /* AppDelegate.swift */,
+				03E0403822BEC5820050F91F /* ToDoTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		03E0403622BEC2FE0050F91F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				03E0402722BEC2A10050F91F /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		03E0403722BEC30A0050F91F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03E0402622BEC2A10050F91F /* ViewController.swift in Sources */,
+				03E0403922BEC5820050F91F /* ToDoTableViewController.swift in Sources */,
 				03E0402422BEC2A10050F91F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
