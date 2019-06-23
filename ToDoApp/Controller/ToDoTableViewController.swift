@@ -11,10 +11,17 @@ import UIKit
 class ToDoTableViewController: UITableViewController {
 
     var itemArray = ["Acheter du Lait", "Changer la couche de Victoria", "Sortir la poubelle "]
+    let defaults = UserDefaults.standard
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
+        if let item = defaults.array(forKey: "ToDoListArray") as? [String] {
+            itemArray = item
+        }
+        
+        
         tableView.separatorStyle = .none
 
     }
@@ -24,8 +31,10 @@ class ToDoTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoItemCell", for: indexPath)
-        
+    
         cell.textLabel?.text = itemArray[indexPath.row]
+            
+        
         
         return cell
     }
@@ -59,6 +68,7 @@ class ToDoTableViewController: UITableViewController {
         let action = UIAlertAction(title: "Ajouter Tache", style: .default) { (action) in
             
         self.itemArray.append(textField.text!)
+        self.defaults.set(self.itemArray, forKey: "ToDoListArray")
         self.tableView.reloadData()
         }
         
