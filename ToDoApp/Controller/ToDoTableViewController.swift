@@ -7,16 +7,21 @@
 //
 
 import UIKit
+import CoreData
 
-class ToDoTableViewController: UITableViewController{
+class ToDoTableViewController: UITableViewController {
 
     var itemArray : [Item] = [Item]()
-    let fileManager = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("atest.plist")
- 
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
         tableView.separatorStyle = .none
+        
+         print("File path \(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first)")
+        
 
     }
     
@@ -40,11 +45,13 @@ class ToDoTableViewController: UITableViewController{
         return itemArray.count
     }
     
+    //MARK: - TableView Interaction Methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let selectedCell = tableView.cellForRow(at: indexPath)
         let item = itemArray[indexPath.row]
         
+       
         itemArray[indexPath.row].done = !item.done
         
         saveData()
@@ -61,12 +68,14 @@ class ToDoTableViewController: UITableViewController{
     let alert = UIAlertController(title: "Creer une nouvelle tache", message: "", preferredStyle: .alert)
 
         var textField = UITextField()
-        let newItem = Item()
+        
         
         let action = UIAlertAction(title: "Ajouter Tache", style: .default) { (action) in
-         
+        
+        let newItem = Item(context: self.context)
+            
         newItem.title = textField.text!
-        newItem.done = false
+        //newItem.done = false
         self.itemArray.append(newItem)
         self.saveData()
    
@@ -89,11 +98,10 @@ class ToDoTableViewController: UITableViewController{
     //MARK: - DATA MANIPULATION METHODS
     
     func saveData() {
-        let encoder = PropertyListEncoder()
+     
         
         do{
-            let data = try encoder.encode(itemArray)
-            try data.write(to: self.fileManager!)
+            try context.save()
             
         }catch {
             print(error)
@@ -105,14 +113,14 @@ class ToDoTableViewController: UITableViewController{
     func loadData() {
         
         do{
-        let data = try Data(contentsOf: self.fileManager!)
-        
-        let decoder = PropertyListDecoder()
-        itemArray = try decoder.decode([Item].self, from: data)
+            let request : NSFetchRequest<Item> = Item.fetchRequest()
             
-        }catch{
-            print(error )
+            itemArray = try context.fetch(request)
+            
+        }catch {
+                print(error)
         }
+ 
     }
 }
 
