@@ -10,7 +10,7 @@ import UIKit
 
 class ToDoTableViewController: UITableViewController {
 
-    let itemArray = ["Acheter du Lait", "Changer la couche de Victoria", "Sortir la poubelle "]
+    var itemArray = ["Acheter du Lait", "Changer la couche de Victoria", "Sortir la poubelle "]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,8 +58,8 @@ class ToDoTableViewController: UITableViewController {
         
         let action = UIAlertAction(title: "Ajouter Tache", style: .default) { (action) in
             
-            print("action")
-            print(textField.text!)
+        self.itemArray.append(textField.text!)
+        self.tableView.reloadData()
         }
         
        
