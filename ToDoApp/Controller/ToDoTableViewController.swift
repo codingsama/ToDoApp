@@ -52,7 +52,28 @@ class ToDoTableViewController: UITableViewController {
     //MARK: - ADD NEW ITEMS
     
     @IBAction func addNewItemButton(_ sender: UIBarButtonItem) {
-    UIAlertAction.
+    let alert = UIAlertController(title: "Creer une nouvelle tache", message: "", preferredStyle: .alert)
+
+        var textField = UITextField()
+        
+        let action = UIAlertAction(title: "Ajouter Tache", style: .default) { (action) in
+            
+            print("action")
+            print(textField.text!)
+        }
+        
+       
+        alert.addTextField { (item) in
+           textField = item
+          
+        }
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+        
+   
+        //self.present(alert, animated: true, completion: nil)
+       
     }
     
     
